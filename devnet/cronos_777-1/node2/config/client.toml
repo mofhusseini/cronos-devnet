@@ -1,0 +1,5 @@
+chain-id = "cronos_777-1"
+keyring-backend = "test"
+output = "json"
+node = "tcp://localhost:26677"
+broadcast-mode = "block"

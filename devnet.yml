@@ -1,0 +1,58 @@
+cronos_777-1:
+  cmd: ./cronosd
+  start-flags: "--trace"
+  app-config:
+    minimum-gas-prices: 0basecro
+    index-events:
+      - ethereum_tx.ethereumTxHash
+    json-rpc:
+      address: "0.0.0.0:8545"
+      ws-address: "0.0.0.0:8546"
+      api: "eth,net,web3,debug,cronos"
+  validators:
+    - coins: 1000000000000000000stake,10000000000000000000000basecro
+      staked: 1000000000000000000stake
+      mnemonic: "expand drum blade junk wolf income giraffe radar unlock flower addict amateur melt memory reward minute grace rate autumn bar flower horse egg memory"
+    - coins: 1000000000000000000stake,10000000000000000000000basecro
+      staked: 1000000000000000000stake
+      mnemonic: "walnut master duty bargain biology limit toe pizza tribe six weird congress around before strike unfold excite consider program proof estate lyrics intact diamond"
+    - coins: 1000000000000000000stake,10000000000000000000000basecro
+      staked: 1000000000000000000stake
+      mnemonic: "cherry defy mystery super daughter basket run shove day educate mouse lady man school day staff remove other snow dad margin stumble hazard kidney"
+  accounts:
+    - name: community
+      coins: 10000000000000000000000basecro
+      mnemonic: "follow ensure rifle become busy aisle drill brown pole monitor amateur board finish work uphold decorate faith side able clarify wedding tiny grid celery"
+
+  genesis:
+    consensus_params:
+      block:
+        max_bytes: "1048576"
+        max_gas: "81500000"
+    app_state:
+      evm:
+        params:
+          evm_denom: basecro
+      cronos:
+        params:
+          cronos_admin: "crc1qy76ccrpq0u5gpt9kn6a3vyvgyd4furshf5xzy"
+          enable_auto_deployment: true
+          ibc_cro_denom: "ibc/6411AE2ADA1E73DB59DB151A8988F9B7D5E7E233D8414DB6817F8F1A01611F86"
+      gov:
+        voting_params:
+          voting_period: "10s"
+        deposit_params:
+          max_deposit_period: "10s"
+          min_deposit:
+            - denom: "basecro"
+              amount: "1"
+      transfer:
+        params:
+          receive_enabled: true
+          send_enabled: true
+      feemarket:
+        params:
+          enable_height: "0"
+          base_fee_change_denominator: 10000000
+          elasticity_multiplier: 8
+          initial_base_fee: "2000000000000"

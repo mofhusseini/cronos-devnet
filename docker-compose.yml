@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+  node0:
+    container_name: cronosnode0
+    image: "cronos/node"
+    build:
+      context: cronos
+      dockerfile: Dockerfile
+    ports:
+      - "26656-26657:26656-26657"
+    volumes:
+      - ./devnet/cronos_777-1/node0:/app/home:Z
+    command:
+      - /cronosd start --home /app/home
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.2
+
+  node1:
+    container_name: cronosnode1
+    image: "cronos/node"
+    ports:
+      - "26659-26660:26656-26657"
+    volumes:
+      - ./devnet/cronos_777-1/node1:/app/home:Z
+    command:
+      - /cronosd start --home /app/home
+    depends_on:
+      - node0
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.3
+
+  node2:
+    container_name: cronosnode2
+    image: "cronos/node"
+    ports:
+      - "26661-26662:26656-26657"
+    volumes:
+      - ./devnet/cronos_777-1/node2:/app/home:Z
+    command:
+      - /cronosd start --home /app/home
+    depends_on:
+      - node0
+    networks:
+      localnet:
+        ipv4_address: 192.167.10.4
+
+networks:
+  localnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        -
+          subnet: 192.167.10.0/16
