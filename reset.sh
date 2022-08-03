@@ -4,8 +4,8 @@
 rm -rf devnet/cronos_777-1/node*/data/*
 
 # create data folder just in case to prevent error for next step
-mkdir -p devnet/cronos_777-1/node2/data/
-mkdir -p devnet/cronos_777-1/node2/data/
+mkdir -p devnet/cronos_777-1/node0/data/
+mkdir -p devnet/cronos_777-1/node1/data/
 mkdir -p devnet/cronos_777-1/node2/data/
 
 # copy empty validator state to each node data dir
