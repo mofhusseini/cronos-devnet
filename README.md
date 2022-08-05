@@ -5,6 +5,9 @@ Simple docker compose to run a local 3-validator cronos devnet
 ###
 
 ```
-./reset.sh
-docker-compose up
+./reset_chainmain.sh
+docker-compose -f docker-compose-chain-main.yml up
+
+./reset_cronos.sh
+docker-compose -f docker-compose-cronos.yml up
 ```

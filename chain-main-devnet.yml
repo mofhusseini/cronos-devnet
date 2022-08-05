@@ -1,0 +1,24 @@
+chainmaind_778-1:
+  cmd: ./chain-maind
+  start-flags: "--trace"
+  app-config:
+    minimum-gas-prices: 0basecro
+  validators:
+    - coins: 10000000000000000000000basecro
+      staked: 1000000000000000000basecro
+      mnemonic: "expand drum blade junk wolf income giraffe radar unlock flower addict amateur melt memory reward minute grace rate autumn bar flower horse egg memory"
+    - coins: 10000000000000000000000basecro
+      staked: 1000000000000000000basecro
+      mnemonic: "walnut master duty bargain biology limit toe pizza tribe six weird congress around before strike unfold excite consider program proof estate lyrics intact diamond"
+    - coins: 10000000000000000000000basecro
+      staked: 1000000000000000000basecro
+      mnemonic: "cherry defy mystery super daughter basket run shove day educate mouse lady man school day staff remove other snow dad margin stumble hazard kidney"
+  accounts:
+    - name: community
+      coins: 10000000000000000000000basecro
+      mnemonic: "follow ensure rifle become busy aisle drill brown pole monitor amateur board finish work uphold decorate faith side able clarify wedding tiny grid celery"
+  genesis:
+    app_state:
+      staking:
+        params:
+          unbonding_time: "10s"

@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+  node0:
+    container_name: chainmainnode0
+    image: "chain-main/node"
+    build:
+      context: chain-main
+      dockerfile: Dockerfile
+    ports:
+      - "26663-26664:26656-26657"
+    volumes:
+      - ./chainmain-devnet/chainmaind_778-1/node0:/app/home:Z
+    command:
+      - /chain-maind start --home /app/home
+    networks:
+      localnet-chainmain:
+        ipv4_address: 192.167.10.2
+
+  node1:
+    container_name: chainmainnode1
+    image: "chain-main/node"
+    ports:
+      - "26665-26666:26656-26657"
+    volumes:
+      - ./chainmain-devnet/chainmaind_778-1/node1:/app/home:Z
+    command:
+      - /chain-maind start --home /app/home
+    depends_on:
+      - node0
+    networks:
+      localnet-chainmain:
+        ipv4_address: 192.167.10.3
+
+  node2:
+    container_name: chainmainnode2
+    image: "chain-main/node"
+    ports:
+      - "26667-26668:26656-26657"
+    volumes:
+      - ./chainmain-devnet/chainmaind_778-1/node2:/app/home:Z
+    command:
+      - /chain-maind start --home /app/home
+    depends_on:
+      - node0
+    networks:
+      localnet-chainmain:
+        ipv4_address: 192.167.10.4
+
+networks:
+  localnet-chainmain:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        -
+          subnet: 192.167.10.0/24
